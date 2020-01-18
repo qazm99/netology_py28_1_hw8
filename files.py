@@ -46,10 +46,6 @@ def get_shop_list_by_dishes(dishes, person_count):
                                                                 'quantity': food['quantity']}
         else:
             print(f'Блюда {dish} нет в нашей кулинарной книге')
-
-        # for food, food_atributs in cook_book:
-        #     all_ingredients.update({})
-        # all_ingredients_list.append(cook_book.get(dish))
     print('Для приготовления нам понадобится: ')
     for ingredient in all_ingredients:
         measure = all_ingredients[ingredient]['measure']
@@ -63,16 +59,15 @@ def main():
         if input('\nПрочитаем файл?(Да/Нет)').upper() != 'ДА':
             print('Программа остановлена')
             break
+
         read_from_file('recipes.txt')
         print("Блюда в кулинарной книге:")
+
         for dish in cook_book:
             print(f'\nБлюдо: {dish}')
             for food in cook_book[dish]:
                 print(f'  {food["ingredient_name"]} {food["quantity"]} {food["measure"]}')
 
-        # print()
-        # print('')
-        # print(cook_book)
         if input('\nНакроем стол?(Да/Нет)').upper() == 'ДА':
             get_shop_list_by_dishes(input('Введите названия блюд через пробел: ').split(),
                                     posintput('Введите количество персон: '))
